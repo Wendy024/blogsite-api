@@ -8,29 +8,23 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
-const cors = require("cors");
+
+//const cors = require("cors");
 
 
 dotenv.config();
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname,"/images")))
 
+/*
 app.use(cors(
     {
         origin: ['https://blogsite-i1du.onrender.com']
     }
 ));
-
-
-/*
-const connect = async()=>{
-    try{
-        await mongoose.connect(process.env.MONGO_URL);
-    }catch(error){
-        throw(error);
-    }
-}
 */
+
+
 mongoose.connect(process.env.MONGO_URL)
 .then(console.log("Connected to mongoDB"))
 .catch((err) => console.log(err));
