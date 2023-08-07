@@ -9,20 +9,21 @@ const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
 
-//const cors = require("cors");
+const cors = require("cors");
+
 
 
 dotenv.config();
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname,"/images")))
 
-/*
+
 app.use(cors(
     {
         origin: ['https://blogsite-i1du.onrender.com']
     }
 ));
-*/
+
 
 
 mongoose.connect(process.env.MONGO_URL)
@@ -40,6 +41,10 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage});
 app.post("/api/upload", upload.single("file"),(req,res)=>{
     res.status(200).json("File has been uploaded");
+});
+
+app.get('/', function(req, res){
+    res.send('Welcome to my API')
 });
 
 app.use("/api/auth", authRoute);
