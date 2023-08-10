@@ -9,7 +9,7 @@ const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
 
-const cors = require("cors");
+//const cors = require("cors");
 
 
 
